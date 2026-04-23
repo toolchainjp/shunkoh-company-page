@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const latestNews = (await getCollection('news'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+function formatDate(date: Date) {
+  return `${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}`;
+}
+---
+
+<Layout
+  title="SHUNKOH | 株式会社シュンコー トップ"
+  description="SHUNKOH | シュンコーは、中小企業の無限の可能性に情熱を注ぎ、地域と共に未来を共創します。「事業マネジメントコンサルタント」。戦略を描き (Brain)、仕組みで回し (Body)、販路を開く (Legs)。事業成長に必要な3要素をワンストップで実行支援するパートナー。（戦略 × 仕組み化 × 販路開拓）"
+  activePage="top"
+>
+
+  <!-- Hero -->
+  <section class="hero appear">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1 class="hero-title">中小企業の無限の可能性に情熱を注ぎ、<br>地域と共に未来を共創します</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service intro -->
+  <section class="service-section appear">
+    <div class="service-desc-block">
+      <div class="section-label-row">
+        <div class="label-line"></div>
+        <h2 class="label-text">Service</h2>
+        <div class="label-line"></div>
+      </div>
+      <p class="service-heading">コンサルティング業</p>
+      <p class="service-sub">事業マネジメントコンサルタント<br>戦略を描き (Brain)、仕組みで回し (Body)、販路を開く (Legs)<br>事業成長に必要な3要素をワンストップで実行支援するパートナー</p>
+    </div>
+  </section>
+
+  <!-- Service cards & image -->
+  <section class="service-more-section appear">
+    <div class="service-cards-wrap">
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-card-head">
+            <div class="service-card-icon"><span class="material-icons">group</span></div>
+            <p class="service-card-title">戦略</p>
+          </div>
+          <p class="service-card-desc">未来志向の参謀。孤独な経営者を支えるセカンドオピニオンとして、経営資源を活用し、事業の進むべき道を示す羅針盤</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-head">
+            <div class="service-card-icon"><span class="material-icons">cast</span></div>
+            <p class="service-card-title">仕組み化</p>
+          </div>
+          <p class="service-card-desc">利益を生む生産性向上。ムダを排除した業務プロセスの再構築とデジタル活用により、高効率で『筋肉質な組織』を実現</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-head">
+            <div class="service-card-icon"><span class="material-icons">content_paste</span></div>
+            <p class="service-card-title">販路開拓</p>
+          </div>
+          <p class="service-card-desc">『売り込み』から『選ばれる』モデルへ。自社の強みを言語化して顧客を引き寄せる導線を設計し、持続的な収益源を確保</p>
+        </div>
+        <div style="width:100%;padding:35px 0;">
+          <img class="service-img" src="/images/s-1456x816_v-fms_webp_72f91ef5-5240-4dc6-98e0-f6ace8fbaa58_middle.webp" alt="Service" />
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-start;margin-top:16px;">
+        <a class="btn-more appear" href="/service">
+          <span class="btn-more-label">View More</span>
+          <div class="btn-more-icon"><span class="material-icons">arrow_forward</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo break -->
+  <div class="photo-section appear" style="margin-top:65px;">
+    <img src="/images/s-2268x1237_v-frms_webp_bd67fa6f-7a7d-411e-a1f5-18d6c657dc0f_middle.webp" alt="" />
+  </div>
+
+  <!-- About -->
+  <section class="about-section appear">
+    <div class="about-inner">
+      <div class="section-label-row">
+        <div class="label-line"></div>
+        <h2 class="label-text">About us</h2>
+        <div class="label-line"></div>
+      </div>
+      <p class="section-heading">会社概要</p>
+      <div class="about-cta-row">
+        <div class="about-cta-col">
+          <a class="btn-more appear" href="/about">
+            <span class="btn-more-label">View More</span>
+            <div class="btn-more-icon"><span class="material-icons">arrow_forward</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="news-section appear">
+    <div class="news-inner">
+      <div class="news-header">
+        <div class="section-label-row">
+          <div class="label-line"></div>
+          <h2 class="label-text">News</h2>
+          <div class="label-line"></div>
+        </div>
+        <p class="section-heading">お知らせ</p>
+      </div>
+      <div class="news-list">
+        {latestNews.map((item, i) => (
+          <a class="news-item appear" href={`/news/${item.slug}`} style={`transition-delay:${i * 0.1}s`}>
+            <div class="news-item-body">
+              <div class="news-item-meta">
+                <p class="news-item-date">{formatDate(item.data.date)}</p>
+                <span class="news-item-tag">{item.data.category}</span>
+              </div>
+              <p class="news-item-title">{item.data.title}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="news-more-row">
+        <a class="btn-more appear" href="/news">
+          <span class="btn-more-label">View More</span>
+          <div class="btn-more-icon"><span class="material-icons">arrow_forward</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="contact-section appear">
+    <span class="contact-watermark">Contact Us</span>
+    <div class="contact-inner">
+      <div class="contact-text-col">
+        <h2 class="contact-heading">お問い合わせ</h2>
+        <p class="contact-desc">初回ご相談は無料となっております。<br>どんな小さなことでも、まずはお気軽にご相談ください。</p>
+      </div>
+      <div class="contact-btn-col">
+        <a class="contact-btn" href="/contact">
+          <span class="material-icons">mail_outline</span>
+          <p class="contact-btn-label">お問い合わせフォームへ</p>
+        </a>
+      </div>
+    </div>
+    <div class="dot" style="width:14px;height:14px;background:#ffffff;bottom:127px;left:104px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0e3b7b;bottom:53px;left:148px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#d3c8a5;bottom:39px;left:70px;"></div>
+    <div class="dot" style="width:14px;height:14px;background:#d3c8a5;top:34px;right:90px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0f3b7c;top:73px;right:193px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#ffffff;top:93px;right:134px;"></div>
+  </section>
+
+</Layout>
+
+<style>
+body { background: var(--blue); }
+.main { background: var(--blue); }
+
+/* HERO */
+.hero {
+  width: 100%; height: 693px; background: #12588c;
+  display: flex; align-items: flex-start; justify-content: flex-start;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  background-image: url("/images/s-1853x1223_v-frms_webp_4eecfb35-96a2-4715-944e-698426eb9b74_middle.webp");
+  background-size: cover; background-position: center; z-index: 0;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(21,38,62,0.2) 0%, rgba(21,38,62,0) 100%);
+  z-index: 1;
+}
+.hero-inner { position: relative; z-index: 2; width: 585px; max-width: 100%; margin: 40px 0 0 40px; }
+.hero-content { width: 100%; }
+.hero-title {
+  font-family: var(--font-jp); font-size: 32px; font-weight: 500;
+  color: rgb(74,71,71); line-height: 1.56; margin-bottom: 20px;
+  text-shadow: 0px 0px 5px rgba(0,0,0,0.24);
+}
+
+/* SERVICE SECTION */
+.service-section { width: 100%; background: var(--blue); padding: 32px 60px 16px; display: flex; flex-direction: column; align-items: center; }
+.service-desc-block { width: 100%; max-width: 1000px; margin-bottom: 34px; display: flex; flex-direction: column; align-items: center; }
+.service-heading { font-family: var(--font-jp); font-size: 40px; font-weight: 500; color: var(--white); line-height: 1.7; text-align: center; height: 90px; display: flex; align-items: center; justify-content: center; }
+.service-sub { font-family: var(--font-jp); font-size: 16px; font-weight: 400; color: var(--white); line-height: 1.8; text-align: center; max-width: 723px; margin-bottom: 20px; }
+
+.service-more-section { width: 100%; background: var(--blue); border-radius: 0 90px 0 0; padding: 0 60px; display: flex; flex-direction: column; align-items: center; padding-bottom: 0; }
+.service-cards-wrap { width: 100%; max-width: 1000px; padding: 43px 0 73px; }
+.service-grid { display: flex; flex-wrap: wrap; gap: 20px; width: 100%; }
+.service-card {
+  background: #091a33; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px; padding: 20px 30px 30px;
+  width: 288px; display: flex; flex-direction: column; gap: 8px;
+  transition: background 0.2s;
+}
+.service-card:hover { background: var(--blue2); }
+.service-card-head { display: flex; align-items: center; gap: 15px; }
+.service-card-icon { background: #233a5d; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.service-card-icon .material-icons { color: var(--blue3); font-size: 24px; }
+.service-card-title { font-family: var(--font-jp); font-size: 24px; font-weight: 500; color: var(--white); letter-spacing: 0.05em; line-height: 1.4; }
+.service-card-desc { font-family: var(--font-jp); font-size: 16px; font-weight: 400; color: var(--white); line-height: 1.4; letter-spacing: 0.05em; text-align: justify; }
+.service-img { width: 100%; height: 411px; border-radius: 30px; object-fit: cover; }
+
+/* PHOTO SECTION */
+.photo-section { width: 100%; height: 326px; overflow: hidden; margin-top: 65px; border-radius: 99px 0 0 101px; }
+.photo-section img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ABOUT SECTION */
+.about-section { width: 100%; background: var(--blue); padding: 35px 60px 80px; display: flex; flex-direction: column; align-items: center; }
+.about-inner { width: 100%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; }
+.about-cta-row { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; margin-top: 35px; padding: 0 130px 34px; height: 137px; }
+.about-cta-col { display: flex; align-items: center; justify-content: center; width: 100%; }
+
+/* NEWS SECTION */
+.news-section { width: 100%; background: var(--blue); padding: 0 60px 120px; display: flex; flex-direction: column; align-items: center; }
+.news-inner { background: var(--blue2); border-radius: 50px; padding: 60px 100px; width: 1000px; max-width: 100%; }
+.news-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
+.news-list { display: flex; flex-direction: column; gap: 30px; width: 100%; }
+.news-item {
+  display: flex; flex-direction: row; justify-content: flex-start;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 34px; text-decoration: none;
+  transition: opacity 0.2s;
+}
+.news-item:hover .news-item-title { color: var(--blue3); }
+.news-item:hover .news-item-date { color: var(--blue3); }
+.news-item-meta { display: flex; align-items: center; justify-content: center; flex-direction: row; gap: 0; margin-bottom: 10px; flex-wrap: nowrap; }
+.news-item-date { font-family: var(--font-jp); font-size: 14px; font-weight: 500; color: var(--white); margin-right: 20px; transition: color 0.2s; }
+.news-item-tag { border: 1px solid rgba(51,151,226,0.3); border-radius: 128px; color: var(--blue3); font-family: var(--font-jp); font-size: 12px; font-weight: 500; padding: 4px 10px; line-height: 1.2; white-space: nowrap; }
+.news-item-body { flex: 1; }
+.news-item-title { font-family: var(--font-jp); font-size: 18px; font-weight: 500; color: var(--white); line-height: 1.2; transition: color 0.2s; }
+.news-more-row { display: flex; justify-content: center; margin-top: 40px; }
+
+@media (max-width: 960px) {
+  .hero { height: 752px; }
+  .hero-title { font-size: 32px; }
+  .service-section { padding: 36px 120px 0; }
+  .service-grid { gap: 8px; }
+  .service-card { width: calc(50% - 4px); }
+  .service-more-section { padding: 43px 40px; }
+  .photo-section { height: 311px; margin-top: 31px; }
+  .about-section { padding: 40px 40px; }
+  .about-cta-row { padding: 0; }
+  .news-section { padding: 14px 40px; }
+  .news-inner { padding: 60px 40px; }
+  .news-item-title { font-size: 20px; }
+}
+@media (max-width: 540px) {
+  .hero { height: 382px; margin-top: 93px; }
+  .hero-title { font-size: 18px; margin-bottom: 10px; }
+  .service-section { padding: 0 10px 16px; }
+  .service-heading { font-size: 24px; height: 62px; }
+  .service-sub { font-size: 14px; letter-spacing: -0.05em; }
+  .service-more-section { padding: 0 8px; }
+  .service-grid { gap: 20px; }
+  .service-card { width: 100%; padding: 20px 20px 30px 25px; }
+  .service-card-title { font-size: 16px; }
+  .service-card-icon { width: 40px; height: 40px; }
+  .service-card-icon .material-icons { font-size: 14px; }
+  .service-img { height: 174px; border-radius: 27px; }
+  .photo-section { height: 163px; margin-top: 0; border-radius: 0; }
+  .about-section { height: 165px; padding: 0; }
+  .about-cta-row { padding: 0 0 34px; margin-top: 7px; height: 127px; flex-direction: column; justify-content: space-between; align-items: center; }
+  .news-section { padding: 35px 0 26px; margin-bottom: 353px; height: 366px; }
+  .news-inner { padding: 60px 24px; }
+  .news-item-title { font-size: 16px; }
+}
+</style>

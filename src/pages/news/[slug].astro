@@ -1,0 +1,133 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const allNews = await getCollection('news');
+  return allNews.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+function formatDate(date: Date) {
+  return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+}
+---
+
+<Layout title={`SHUNKOH | ${entry.data.title}`} activePage="news">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="header-title-row appear">
+      <h1 class="page-title">News</h1>
+      <p class="page-subtitle">お知らせ</p>
+    </div>
+    <div class="dot" style="width:14px;height:14px;background:#3397e2;top:79px;left:26px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0e3b7b;bottom:72px;left:39px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#d3c8a5;top:101px;left:78px;"></div>
+    <div class="dot" style="width:14px;height:14px;background:#d3c8a5;bottom:105px;right:281px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0f3b7c;bottom:82px;right:211px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#0571c1;bottom:111px;right:180px;"></div>
+  </section>
+
+  <!-- Article -->
+  <section class="article-section">
+    <div class="article-inner appear">
+
+      <div class="article-meta">
+        <a href="/news" class="back-link">
+          <span class="material-icons">arrow_back_ios</span>
+          一覧に戻る
+        </a>
+        <div class="meta-right">
+          <span class="article-cat">{entry.data.category}</span>
+          <span class="article-date">{formatDate(entry.data.date)}</span>
+        </div>
+      </div>
+
+      <h1 class="article-title">{entry.data.title}</h1>
+
+      <div class="article-body prose">
+        <Content />
+      </div>
+
+      <div class="article-footer">
+        <a href="/news" class="btn-more">
+          <span class="btn-more-label">一覧に戻る</span>
+          <div class="btn-more-icon"><span class="material-icons">arrow_back</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="contact-section appear">
+    <span class="contact-watermark">Contact Us</span>
+    <div class="contact-inner">
+      <div class="contact-text-col">
+        <h2 class="contact-heading">お問い合わせ</h2>
+        <p class="contact-desc">初回ご相談は無料となっております。<br>どんな小さなことでも、まずはお気軽にご相談ください。</p>
+      </div>
+      <div class="contact-btn-col">
+        <a class="contact-btn" href="/contact">
+          <span class="material-icons">mail_outline</span>
+          <p class="contact-btn-label">お問い合わせフォームへ</p>
+        </a>
+      </div>
+    </div>
+    <div class="dot" style="width:14px;height:14px;background:#ffffff;bottom:127px;left:104px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0e3b7b;bottom:53px;left:148px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#d3c8a5;bottom:39px;left:70px;"></div>
+    <div class="dot" style="width:14px;height:14px;background:#d3c8a5;top:34px;right:90px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0f3b7c;top:73px;right:193px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#ffffff;top:93px;right:134px;"></div>
+  </section>
+
+</Layout>
+
+<style>
+body { background: var(--navy); }
+.main { background: var(--navy); }
+
+.article-section { width: 100%; background: var(--navy); padding: 60px 60px 80px; display: flex; flex-direction: column; align-items: center; }
+.article-inner { width: 100%; max-width: 800px; }
+
+.article-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+.back-link { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-jp); font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+.back-link .material-icons { font-size: 14px; }
+.back-link:hover { color: var(--blue3); }
+.meta-right { display: flex; align-items: center; gap: 12px; }
+.article-cat { display: inline-block; font-family: var(--font-jp); font-size: 12px; font-weight: 500; color: var(--blue3); background: rgba(53,151,226,0.15); border: 1px solid rgba(53,151,226,0.3); border-radius: 6px; padding: 4px 12px; }
+.article-date { font-family: var(--font-en); font-size: 13px; color: rgba(255,255,255,0.5); }
+
+.article-title { font-family: var(--font-jp); font-size: 28px; font-weight: 500; color: var(--white); line-height: 1.6; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+/* Prose / article body */
+.prose { color: rgba(255,255,255,0.85); line-height: 2; font-size: 16px; }
+.prose :global(h2) { font-family: var(--font-jp); font-size: 22px; font-weight: 500; color: var(--white); margin: 40px 0 16px; padding-left: 16px; border-left: 3px solid var(--blue3); }
+.prose :global(h3) { font-family: var(--font-jp); font-size: 18px; font-weight: 500; color: var(--white); margin: 32px 0 12px; }
+.prose :global(p) { margin-bottom: 20px; }
+.prose :global(ul), .prose :global(ol) { padding-left: 24px; margin-bottom: 20px; }
+.prose :global(li) { margin-bottom: 8px; }
+.prose :global(strong) { color: var(--white); font-weight: 700; }
+.prose :global(a) { color: var(--blue3); text-decoration: underline; }
+.prose :global(table) { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+.prose :global(th), .prose :global(td) { padding: 12px 16px; border: 1px solid rgba(255,255,255,0.15); font-size: 14px; }
+.prose :global(th) { background: rgba(5,113,193,0.3); color: var(--white); font-weight: 500; }
+.prose :global(td) { color: rgba(255,255,255,0.8); }
+.prose :global(blockquote) { border-left: 3px solid var(--sand); padding-left: 20px; color: rgba(255,255,255,0.65); margin: 24px 0; }
+.prose :global(hr) { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 40px 0; }
+
+.article-footer { margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: flex-start; }
+.article-footer .btn-more { flex-direction: row-reverse; gap: 16px; }
+
+@media (max-width: 540px) {
+  .article-section { padding: 40px 24px 60px; }
+  .article-title { font-size: 22px; }
+  .article-meta { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+</style>

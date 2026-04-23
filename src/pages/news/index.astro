@@ -1,0 +1,143 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const allNews = await getCollection('news');
+const sortedNews = allNews.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const categories = ['すべて', 'お知らせ', 'コラム', 'メディア掲載'] as const;
+
+function formatDate(date: Date) {
+  return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+}
+---
+
+<Layout title="SHUNKOH | News お知らせ" activePage="news">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="header-title-row appear">
+      <h1 class="page-title">News</h1>
+      <p class="page-subtitle">お知らせ</p>
+    </div>
+    <div class="dot" style="width:14px;height:14px;background:#3397e2;top:79px;left:26px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0e3b7b;bottom:72px;left:39px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#d3c8a5;top:101px;left:78px;"></div>
+    <div class="dot" style="width:14px;height:14px;background:#d3c8a5;bottom:105px;right:281px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0f3b7c;bottom:82px;right:211px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#0571c1;bottom:111px;right:180px;"></div>
+  </section>
+
+  <!-- News List -->
+  <section class="news-section">
+    <div class="news-inner">
+
+      <div class="category-filter appear">
+        {categories.map((cat) => (
+          <button class={`cat-btn${cat === 'すべて' ? ' active' : ''}`} data-category={cat}>
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div class="news-list">
+        {sortedNews.map((item, i) => (
+          <a
+            class="news-item appear"
+            href={`/news/${item.slug}`}
+            style={`transition-delay:${i * 0.05}s`}
+            data-category={item.data.category}
+          >
+            <div class="news-date-col">
+              <p class="news-date">{formatDate(item.data.date)}</p>
+              <span class="news-cat">{item.data.category}</span>
+            </div>
+            <div class="news-body">
+              <p class="news-title">{item.data.title}</p>
+              <p class="news-excerpt">{item.data.excerpt}</p>
+            </div>
+            <span class="news-arrow material-icons">arrow_forward_ios</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="contact-section appear">
+    <span class="contact-watermark">Contact Us</span>
+    <div class="contact-inner">
+      <div class="contact-text-col">
+        <h2 class="contact-heading">お問い合わせ</h2>
+        <p class="contact-desc">初回ご相談は無料となっております。<br>どんな小さなことでも、まずはお気軽にご相談ください。</p>
+      </div>
+      <div class="contact-btn-col">
+        <a class="contact-btn" href="/contact">
+          <span class="material-icons">mail_outline</span>
+          <p class="contact-btn-label">お問い合わせフォームへ</p>
+        </a>
+      </div>
+    </div>
+    <div class="dot" style="width:14px;height:14px;background:#ffffff;bottom:127px;left:104px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0e3b7b;bottom:53px;left:148px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#d3c8a5;bottom:39px;left:70px;"></div>
+    <div class="dot" style="width:14px;height:14px;background:#d3c8a5;top:34px;right:90px;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#0f3b7c;top:73px;right:193px;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#ffffff;top:93px;right:134px;"></div>
+  </section>
+
+</Layout>
+
+<style>
+body { background: var(--navy); }
+.main { background: var(--navy); }
+
+.news-section { width: 100%; background: var(--navy); padding: 80px 60px; display: flex; flex-direction: column; align-items: center; }
+.news-inner { width: 100%; max-width: 900px; }
+
+.category-filter { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+.cat-btn { font-family: var(--font-jp); font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); background: transparent; border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; padding: 8px 20px; cursor: pointer; transition: all 0.2s; }
+.cat-btn:hover, .cat-btn.active { background: var(--blue2); border-color: var(--blue2); color: var(--white); }
+
+.news-list { display: flex; flex-direction: column; gap: 0; }
+.news-item { display: flex; align-items: flex-start; gap: 28px; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.1); text-decoration: none; transition: background 0.2s; border-radius: 8px; }
+.news-item:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+.news-item:hover { background: rgba(255,255,255,0.04); padding-left: 12px; padding-right: 12px; margin-left: -12px; margin-right: -12px; }
+.news-item[hidden] { display: none; }
+.news-date-col { flex-shrink: 0; width: 110px; }
+.news-date { font-family: var(--font-en); font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.news-cat { display: inline-block; font-family: var(--font-jp); font-size: 11px; font-weight: 500; color: var(--blue3); background: rgba(53,151,226,0.15); border-radius: 4px; padding: 2px 8px; margin-top: 6px; white-space: nowrap; }
+.news-body { flex: 1; }
+.news-title { font-family: var(--font-jp); font-size: 16px; font-weight: 500; color: var(--white); line-height: 1.7; margin-bottom: 8px; transition: color 0.2s; }
+.news-item:hover .news-title { color: var(--blue3); }
+.news-excerpt { font-family: var(--font-jp); font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+.news-arrow { flex-shrink: 0; display: flex; align-items: center; color: rgba(255,255,255,0.3); transition: color 0.2s, transform 0.2s; }
+.news-item:hover .news-arrow { color: var(--blue3); transform: translateX(4px); }
+
+@media (max-width: 540px) {
+  .news-section { padding: 60px 24px; }
+  .news-item { flex-wrap: wrap; gap: 12px; }
+  .news-date-col { width: auto; display: flex; align-items: center; gap: 10px; }
+}
+</style>
+
+<script>
+const buttons = document.querySelectorAll<HTMLButtonElement>('.cat-btn');
+const items = document.querySelectorAll<HTMLElement>('.news-item');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const selected = btn.dataset.category;
+    items.forEach(item => {
+      if (selected === 'すべて' || item.dataset.category === selected) {
+        item.hidden = false;
+      } else {
+        item.hidden = true;
+      }
+    });
+  });
+});
+</script>
