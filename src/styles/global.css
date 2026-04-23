@@ -22,13 +22,13 @@ body { font-family: var(--font-jp); background: var(--white); color: var(--white
 .logo-img { width: 50%; max-width: 90px; margin-bottom: 6px; }
 .logo-name { font-family: var(--font-en); font-size: 20px; font-weight: 400; letter-spacing: 0.29em; color: #000; text-align: center; line-height: 1.4; }
 .logo-sub { font-family: var(--font-jp); font-size: 11px; font-weight: 500; color: rgb(74,71,71); text-align: center; margin-top: 3px; }
-.sidebar-nav { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; list-style: none; }
+.sidebar-nav { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; list-style: none; margin-top: 80px; }
 .sidebar-nav li { border-bottom: 1px solid #091a33; width: 100%; text-align: center; }
 .sidebar-nav li:first-child { border-top: 1px solid #091a33; }
 .sidebar-nav a { display: block; font-family: var(--font-jp); font-size: 16px; font-weight: 500; color: #091a33; text-decoration: none; padding: 24px 0; transition: color 0.2s; }
 .sidebar-nav li:first-child a { padding-top: 0; }
 .sidebar-nav a:hover { color: var(--blue3); }
-.sidebar-nav a.active { color: var(--blue2); }
+.sidebar-nav a.active { color: #091a33; }
 .sidebar-contact { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--blue); border-radius: 22px; width: 100%; padding: 15px; text-decoration: none; transition: background 0.2s, scale 0.2s; gap: 4px; }
 .sidebar-contact:hover { background: #001f35; scale: 0.95; }
 .sidebar-contact .material-icons { background: var(--blue2); border-radius: 50%; color: var(--white); font-size: 18px; padding: 8px; }
