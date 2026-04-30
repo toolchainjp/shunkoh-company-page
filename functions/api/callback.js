@@ -35,8 +35,14 @@ function respondWithScript(message) {
   (function () {
     function send() {
       if (window.opener) {
-        window.opener.postMessage(${JSON.stringify(message)}, '*');
-        window.close();
+        window.addEventListener('message', function onMessage(e) {
+          if (e.data === 'authorizing:github') {
+            window.removeEventListener('message', onMessage);
+            window.opener.postMessage(${JSON.stringify(message)}, e.origin);
+            setTimeout(function () { window.close(); }, 500);
+          }
+        });
+        window.opener.postMessage('authorizing:github', '*');
       } else {
         setTimeout(send, 100);
       }
