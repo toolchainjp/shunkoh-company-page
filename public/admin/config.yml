@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: toolchainjp/shunkoh-company-page
+  branch: main
+  base_url: https://shunkoh-company-page.pages.dev
+
+media_folder: public/images
+public_folder: /images
+
+locale: ja
+
+collections:
+  - name: news
+    label: ニュース
+    folder: src/content/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: タイトル, name: title, widget: string }
+      - { label: 日付, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - label: カテゴリ
+        name: category
+        widget: select
+        options:
+          - { label: お知らせ, value: お知らせ }
+          - { label: コラム, value: コラム }
+          - { label: メディア掲載, value: メディア掲載 }
+      - { label: 抜粋, name: excerpt, widget: text }
+      - { label: 本文, name: body, widget: markdown }
