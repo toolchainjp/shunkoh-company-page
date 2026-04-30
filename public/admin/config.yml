@@ -3,7 +3,7 @@ backend:
   repo: toolchainjp/shunkoh-company-page
   branch: main
   base_url: https://shunkoh-company-page.pages.dev
-  auth_endpoint: auth/api
+  auth_endpoint: api/auth
 
 media_folder: public/images
 public_folder: /images
