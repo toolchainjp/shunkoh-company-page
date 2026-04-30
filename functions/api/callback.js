@@ -33,8 +33,15 @@ function respondWithScript(message) {
 <body>
 <script>
   (function () {
-    window.opener.postMessage(${JSON.stringify(message)}, '*');
-    window.close();
+    function send() {
+      if (window.opener) {
+        window.opener.postMessage(${JSON.stringify(message)}, '*');
+        window.close();
+      } else {
+        setTimeout(send, 100);
+      }
+    }
+    send();
   })();
 <\/script>
 </body>
