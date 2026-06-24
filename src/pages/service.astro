@@ -128,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="label-text">Case Studies</h2>
       <div class="label-line"></div>
     </div>
-    <p class="section-heading cases-heading appear" style="transition-delay:.1s">支援事例</p>
+    <p class="section-heading cases-heading appear" style="transition-delay:.1s">事例</p>
 
     <div class="case-table appear" style="transition-delay:.2s">
       <div class="case-row case-row-head">
@@ -139,8 +139,8 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="case-row">
         <div class="case-cell case-cell-industry">
-          <span class="material-icons case-icon">precision_manufacturing</span>
-          製造業
+          <span class="material-icons case-icon case-icon-manufacturing">precision_manufacturing</span>
+          <span class="case-industry-label">製造業</span>
         </div>
         <div class="case-cell case-cell-support">事業戦略・市場分析・販路開拓・調達最適化・原価低減・生産効率化・SCM最適化・事業承継</div>
         <div class="case-cell case-cell-result">コスト削減と新規取引先の獲得により、売上・利益の拡大</div>
@@ -148,8 +148,8 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="case-row">
         <div class="case-cell case-cell-industry">
-          <span class="material-icons case-icon">agriculture</span>
-          農業生産者
+          <span class="material-icons case-icon case-icon-agriculture">agriculture</span>
+          <span class="case-industry-label">農業生産者</span>
         </div>
         <div class="case-cell case-cell-support">差別化戦略・ブランディング・販路開拓</div>
         <div class="case-cell case-cell-result">自然栽培・有機栽培品の直販チャネル確立・単価アップ</div>
@@ -157,8 +157,8 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="case-row">
         <div class="case-cell case-cell-industry">
-          <span class="material-icons case-icon">apartment</span>
-          建物管理・建築会社
+          <span class="material-icons case-icon case-icon-apartment">apartment</span>
+          <span class="case-industry-label">建物管理・建築会社</span>
         </div>
         <div class="case-cell case-cell-support">事業戦略・マーケティング・仕組み化・販路開拓</div>
         <div class="case-cell case-cell-result">見込み客の発掘、受注の安定化・業務効率化により、売上・利益の拡大</div>
@@ -166,8 +166,8 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="case-row">
         <div class="case-cell case-cell-industry">
-          <span class="material-icons case-icon">computer</span>
-          システム会社
+          <span class="material-icons case-icon case-icon-computer">computer</span>
+          <span class="case-industry-label">システム会社</span>
         </div>
         <div class="case-cell case-cell-support">情報発信・ブランディング・SNS戦略</div>
         <div class="case-cell case-cell-result">魅力発信、見込み客との接点拡大</div>
@@ -175,8 +175,8 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="case-row">
         <div class="case-cell case-cell-industry">
-          <span class="material-icons case-icon">videocam</span>
-          テレビ制作会社・葬儀業他
+          <span class="material-icons case-icon case-icon-video">videocam</span>
+          <span class="case-industry-label">テレビ制作会社・葬儀業他</span>
         </div>
         <div class="case-cell case-cell-support">人材確保定着・採用戦略支援</div>
         <div class="case-cell case-cell-result">採用計画・人材要件・魅力棚卸しにより採用コスト削減・定着率向上</div>
@@ -242,20 +242,29 @@ body { background: var(--navy); }
 .cases-section { width: 100%; background: var(--navy); padding: 80px 60px; display: flex; flex-direction: column; align-items: center; }
 .cases-heading { color: var(--white); }
 .case-table { width: 100%; max-width: 1100px; display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; }
-.case-row { display: grid; grid-template-columns: 240px 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.case-row { display: grid; grid-template-columns: 220px 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,0.12); }
 .case-row:last-child { border-bottom: none; }
 .case-row-head { background: var(--blue2); }
 .case-row-head .case-cell { font-family: var(--font-jp); font-size: 16px; font-weight: 700; color: var(--white); text-align: center; justify-content: center; }
 .case-cell { padding: 24px 20px; font-family: var(--font-jp); font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.8; display: flex; align-items: center; gap: 10px; }
-.case-cell-industry { background: rgba(255,255,255,0.05); font-weight: 500; color: var(--white); }
-.case-icon { font-size: 22px; color: var(--blue3); flex-shrink: 0; }
+.case-cell-industry { background: rgba(255,255,255,0.05); font-weight: 500; color: var(--white); flex-direction: column; gap: 12px; text-align: center; }
+.case-industry-label { font-size: 18px; font-weight: 700; }
+.case-icon { font-size: 48px; flex-shrink: 0; }
+.case-icon-manufacturing { color: #3397e2; }
+.case-icon-agriculture { color: #5aa469; }
+.case-icon-apartment { color: #d3c8a5; }
+.case-icon-computer { color: #6c7ae0; }
+.case-icon-video { color: #e07a5f; }
 
 @media (max-width: 960px) {
   .service-card { flex-direction: column !important; padding: 40px 30px; gap: 24px; }
   .pillars-row { gap: 0; }
   .case-row { grid-template-columns: 1fr; }
   .case-row-head { display: none; }
-  .case-cell { padding: 14px 20px; }
+  .case-cell { padding: 18px 24px; }
+  .case-cell-industry { flex-direction: row; text-align: left; gap: 16px; }
+  .case-icon { font-size: 36px; }
+  .case-industry-label { font-size: 17px; }
   .case-cell-support::before { content: '支援内容　'; font-weight: 700; color: var(--white); }
   .case-cell-result::before { content: '成果イメージ　'; font-weight: 700; color: var(--white); }
 }
@@ -263,5 +272,6 @@ body { background: var(--navy); }
   .pillars-section { padding: 40px 24px; }
   .intro-section { padding: 40px 24px 0; }
   .cases-section { padding: 40px 24px; }
+  .case-cell { padding: 16px 20px; font-size: 13px; }
 }
 </style>
