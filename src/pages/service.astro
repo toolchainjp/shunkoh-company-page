@@ -121,6 +121,69 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- Case Studies -->
+  <section class="cases-section">
+    <div class="section-label-row appear">
+      <div class="label-line"></div>
+      <h2 class="label-text">Case Studies</h2>
+      <div class="label-line"></div>
+    </div>
+    <p class="section-heading cases-heading appear" style="transition-delay:.1s">支援事例</p>
+
+    <div class="case-table appear" style="transition-delay:.2s">
+      <div class="case-row case-row-head">
+        <div class="case-cell case-cell-industry">業種・業態</div>
+        <div class="case-cell case-cell-support">支援内容</div>
+        <div class="case-cell case-cell-result">成果イメージ</div>
+      </div>
+
+      <div class="case-row">
+        <div class="case-cell case-cell-industry">
+          <span class="material-icons case-icon">precision_manufacturing</span>
+          製造業
+        </div>
+        <div class="case-cell case-cell-support">事業戦略・市場分析・販路開拓・調達最適化・原価低減・生産効率化・SCM最適化・事業承継</div>
+        <div class="case-cell case-cell-result">コスト削減と新規取引先の獲得により、売上・利益の拡大</div>
+      </div>
+
+      <div class="case-row">
+        <div class="case-cell case-cell-industry">
+          <span class="material-icons case-icon">agriculture</span>
+          農業生産者
+        </div>
+        <div class="case-cell case-cell-support">差別化戦略・ブランディング・販路開拓</div>
+        <div class="case-cell case-cell-result">自然栽培・有機栽培品の直販チャネル確立・単価アップ</div>
+      </div>
+
+      <div class="case-row">
+        <div class="case-cell case-cell-industry">
+          <span class="material-icons case-icon">apartment</span>
+          建物管理・建築会社
+        </div>
+        <div class="case-cell case-cell-support">事業戦略・マーケティング・仕組み化・販路開拓</div>
+        <div class="case-cell case-cell-result">見込み客の発掘、受注の安定化・業務効率化により、売上・利益の拡大</div>
+      </div>
+
+      <div class="case-row">
+        <div class="case-cell case-cell-industry">
+          <span class="material-icons case-icon">computer</span>
+          システム会社
+        </div>
+        <div class="case-cell case-cell-support">情報発信・ブランディング・SNS戦略</div>
+        <div class="case-cell case-cell-result">魅力発信、見込み客との接点拡大</div>
+      </div>
+
+      <div class="case-row">
+        <div class="case-cell case-cell-industry">
+          <span class="material-icons case-icon">videocam</span>
+          テレビ制作会社・葬儀業他
+        </div>
+        <div class="case-cell case-cell-support">人材確保定着・採用戦略支援</div>
+        <div class="case-cell case-cell-result">採用計画・人材要件・魅力棚卸しにより採用コスト削減・定着率向上</div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact CTA -->
   <section class="contact-section appear">
     <span class="contact-watermark">Contact Us</span>
@@ -176,12 +239,29 @@ body { background: var(--navy); }
 .service-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; }
 .service-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue3); flex-shrink: 0; margin-top: 8px; }
 
+.cases-section { width: 100%; background: var(--navy); padding: 80px 60px; display: flex; flex-direction: column; align-items: center; }
+.cases-heading { color: var(--white); }
+.case-table { width: 100%; max-width: 1100px; display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; }
+.case-row { display: grid; grid-template-columns: 240px 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.case-row:last-child { border-bottom: none; }
+.case-row-head { background: var(--blue2); }
+.case-row-head .case-cell { font-family: var(--font-jp); font-size: 16px; font-weight: 700; color: var(--white); text-align: center; justify-content: center; }
+.case-cell { padding: 24px 20px; font-family: var(--font-jp); font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.8; display: flex; align-items: center; gap: 10px; }
+.case-cell-industry { background: rgba(255,255,255,0.05); font-weight: 500; color: var(--white); }
+.case-icon { font-size: 22px; color: var(--blue3); flex-shrink: 0; }
+
 @media (max-width: 960px) {
   .service-card { flex-direction: column !important; padding: 40px 30px; gap: 24px; }
   .pillars-row { gap: 0; }
+  .case-row { grid-template-columns: 1fr; }
+  .case-row-head { display: none; }
+  .case-cell { padding: 14px 20px; }
+  .case-cell-support::before { content: '支援内容　'; font-weight: 700; color: var(--white); }
+  .case-cell-result::before { content: '成果イメージ　'; font-weight: 700; color: var(--white); }
 }
 @media (max-width: 540px) {
   .pillars-section { padding: 40px 24px; }
   .intro-section { padding: 40px 24px 0; }
+  .cases-section { padding: 40px 24px; }
 }
 </style>
