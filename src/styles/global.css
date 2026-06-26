@@ -105,4 +105,5 @@ footer { width: 100%; background: #133046; padding: 0 60px 40px; }
   .contact-section { border-radius: 0 50px 0 0; padding: 40px 24px; }
   footer { padding: 0 24px 40px; }
   .footer-copy { text-align: center; }
+  .hero-img-wrap { height: 220px; border-radius: 0 36px 36px 0; }
 }
