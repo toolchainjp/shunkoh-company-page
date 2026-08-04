@@ -1,0 +1,34 @@
+{
+  "name": "shunkoh-company-page",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
+  "features": {
+    "ghcr.io/shyim/devcontainers-features/bun:0": {
+      "version": "latest"
+    }
+  },
+  "postCreateCommand": "bun install",
+  "forwardPorts": [4321, 8788],
+  "portsAttributes": {
+    "4321": {
+      "label": "Astro dev server",
+      "onAutoForward": "notify"
+    },
+    "8788": {
+      "label": "Cloudflare Pages (wrangler)",
+      "onAutoForward": "silent"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "files.eol": "\n"
+      }
+    }
+  },
+  "remoteUser": "node"
+}
