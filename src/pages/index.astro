@@ -41,7 +41,6 @@ function formatDate(date: Date) {
           <h2 class="label-text">Service</h2>
           <div class="label-line"></div>
         </div>
-        <p class="service-sub">戦略を描き (Brain)、仕組みで回し (Body)、販路を開く (Legs)<br />事業成長に必要な3要素をワンストップで実行支援するパートナー</p>
       </div>
     </div>
   </section>
@@ -196,18 +195,17 @@ body { background: var(--blue); }
 }
 
 /* SERVICE SECTION */
-.service-section { width: 100%; background: var(--blue); padding: 32px 60px 16px; display: flex; flex-direction: column; align-items: center; }
-.service-desc-block { width: 100%; max-width: 1000px; margin-bottom: 34px; display: flex; flex-direction: column; align-items: center; }
+.service-section { width: 100%; background: var(--blue); padding: 32px 60px 0; display: flex; flex-direction: column; align-items: center; }
+.service-desc-block { width: 100%; max-width: 1000px; margin-bottom: 0; display: flex; flex-direction: column; align-items: center; }
 .service-heading { font-family: var(--font-jp); font-size: 26px; font-weight: 500; color: var(--white); line-height: 1.6; text-align: center; margin-top: 44px; margin-bottom: 0; }
-.service-desc-text { font-family: var(--font-jp); font-size: 22px; font-weight: 400; color: var(--white); line-height: 1.6; text-align: center; max-width: 900px; margin-top: 114px; margin-bottom: 0; }
-.service-label-wrap { margin-top: 130px; margin-bottom: 10px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0; }
-.service-pre-label { font-family: var(--font-jp); font-size: 19px; font-weight: 500; color: var(--sand); letter-spacing: 0.05em; text-align: center; margin-bottom: 0; }
+.service-desc-text { font-family: var(--font-jp); font-size: 20px; font-weight: 400; color: var(--white); line-height: 1.6; text-align: center; max-width: 900px; margin-top: 114px; margin-bottom: 0; }
+.service-label-wrap { margin-top: 130px; margin-bottom: 0; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0; }
+.service-pre-label { font-family: var(--font-jp); font-size: 20px; font-weight: 500; color: var(--sand); letter-spacing: 0.05em; text-align: center; margin-bottom: 0; }
 .service-label-gap { height: 40px; }
 .service-label-wrap .label-text { font-size: 20px; }
-.service-sub { font-family: var(--font-jp); font-size: 19px; font-weight: 400; color: rgba(255,255,255,0.65); line-height: 1.8; text-align: center; max-width: 723px; margin-top: 10px; margin-bottom: 20px; }
 
 .service-more-section { width: 100%; background: var(--blue); border-radius: 0 90px 0 0; padding: 0 60px; display: flex; flex-direction: column; align-items: center; padding-bottom: 0; }
-.service-cards-wrap { width: 100%; max-width: 1000px; padding: 43px 0 73px; }
+.service-cards-wrap { width: 100%; max-width: 1000px; padding: 10px 0 73px; }
 .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
 .service-card {
   background: #091a33; border: 1px solid rgba(255,255,255,0.2);
@@ -274,8 +272,7 @@ body { background: var(--blue); }
   .service-heading { font-size: 17px; margin-top: 28px; }
   .service-desc-text { font-size: 14px; margin-top: 56px; }
   .service-label-wrap { margin-top: 70px; }
-  .service-pre-label { font-size: 14px; }
-  .service-sub { font-size: 14px; margin-top: 6px; }
+  .service-pre-label { font-size: 15px; }
   .service-more-section { padding: 0 8px; }
   .service-grid { grid-template-columns: 1fr; gap: 20px; }
   .service-card { width: 100%; padding: 20px 20px 30px 25px; }
