@@ -31,10 +31,11 @@ function formatDate(date: Date) {
   <!-- Service intro -->
   <section class="service-section appear">
     <div class="service-desc-block">
-      <p class="service-tag">事業コンサルタント / プロジェクトマネージャー</p>
       <p class="service-heading">「提案」で終わらせない。<br />「実行」に伴走するプロジェクトマネージャー</p>
       <p class="service-desc-text">AIが最適な戦略（理想）を提示できる時代。しかし、企業にはそれを現場で実行する「資源と仕組み（現実）」が不足しています。<br />当社はこのギャップを埋め、戦略を絵に描いた餅で終わらせず、確実に実行・完遂させるあなたの右腕（プロジェクトマネージャー）です。</p>
       <div class="service-label-wrap">
+        <p class="service-pre-label">＜ 事業コンサルタント / プロジェクトマネージャー ＞</p>
+        <div class="service-label-gap"></div>
         <div class="section-label-row">
           <div class="label-line"></div>
           <h2 class="label-text">Service</h2>
@@ -197,11 +198,12 @@ body { background: var(--blue); }
 /* SERVICE SECTION */
 .service-section { width: 100%; background: var(--blue); padding: 32px 60px 16px; display: flex; flex-direction: column; align-items: center; }
 .service-desc-block { width: 100%; max-width: 1000px; margin-bottom: 34px; display: flex; flex-direction: column; align-items: center; }
-.service-tag { font-family: var(--font-jp); font-size: 19px; font-weight: 500; color: var(--sand); letter-spacing: 0.05em; text-align: center; margin-bottom: 0; }
-.service-heading { font-family: var(--font-jp); font-size: 31px; font-weight: 500; color: var(--white); line-height: 1.6; text-align: center; margin-top: 80px; margin-bottom: 0; }
-.service-desc-text { font-family: var(--font-jp); font-size: 31px; font-weight: 400; color: var(--white); line-height: 1.6; text-align: center; max-width: 900px; margin-top: 80px; margin-bottom: 0; }
-.service-label-wrap { margin-top: 200px; margin-bottom: 10px; width: 100%; display: flex; justify-content: center; }
-.service-sub { font-family: var(--font-jp); font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.65); line-height: 1.8; text-align: center; max-width: 723px; margin-bottom: 20px; }
+.service-heading { font-family: var(--font-jp); font-size: 29px; font-weight: 500; color: var(--white); line-height: 1.6; text-align: center; margin-top: 40px; margin-bottom: 0; }
+.service-desc-text { font-family: var(--font-jp); font-size: 27px; font-weight: 400; color: var(--white); line-height: 1.6; text-align: center; max-width: 900px; margin-top: 80px; margin-bottom: 0; }
+.service-label-wrap { margin-top: 200px; margin-bottom: 10px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0; }
+.service-pre-label { font-family: var(--font-jp); font-size: 17px; font-weight: 500; color: var(--sand); letter-spacing: 0.05em; text-align: center; margin-bottom: 0; }
+.service-label-gap { height: 40px; }
+.service-sub { font-family: var(--font-jp); font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.65); line-height: 1.8; text-align: center; max-width: 723px; margin-bottom: 20px; }
 
 .service-more-section { width: 100%; background: var(--blue); border-radius: 0 90px 0 0; padding: 0 60px; display: flex; flex-direction: column; align-items: center; padding-bottom: 0; }
 .service-cards-wrap { width: 100%; max-width: 1000px; padding: 43px 0 73px; }
@@ -268,11 +270,11 @@ body { background: var(--blue); }
   .hero { height: 382px; margin-top: 93px; }
   .hero-title { font-size: 18px; margin-bottom: 10px; }
   .service-section { padding: 0 10px 16px; }
-  .service-tag { font-size: 15px; }
-  .service-heading { font-size: 20px; margin-top: 48px; }
-  .service-desc-text { font-size: 18px; margin-top: 48px; }
+  .service-heading { font-size: 19px; margin-top: 24px; }
+  .service-desc-text { font-size: 16px; margin-top: 40px; }
   .service-label-wrap { margin-top: 100px; }
-  .service-sub { font-size: 13px; letter-spacing: -0.03em; }
+  .service-pre-label { font-size: 14px; }
+  .service-sub { font-size: 14px; letter-spacing: -0.02em; }
   .service-more-section { padding: 0 8px; }
   .service-grid { grid-template-columns: 1fr; gap: 20px; }
   .service-card { width: 100%; padding: 20px 20px 30px 25px; }
