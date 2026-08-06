@@ -25,9 +25,18 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- Intro -->
   <section class="intro-section">
-    <p class="intro-text appear">
+    <!-- PC -->
+    <p class="intro-text appear sp-hide">
       戦略を描き (Brain)、仕組みで回し (Body)、販路を開く (Legs)<br />
       事業成長に必要な3要素をワンストップで実行支援するパートナー
+    </p>
+    <!-- スマホ -->
+    <p class="intro-text appear pc-hide">
+      戦略を描き（Brain）<br />
+      仕組みで回し（Body）<br />
+      販路を開く（Legs）<br /><br />
+      事業成長に必要な3要素をワンストップで<br />
+      実行支援するパートナー
     </p>
   </section>
 
@@ -208,6 +217,8 @@ body { background: var(--navy); }
 
 .intro-section { width: 100%; padding: 60px 60px 0; display: flex; flex-direction: column; align-items: center; }
 .intro-text { font-family: var(--font-jp); font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.85); line-height: 2; text-align: center; max-width: 720px; margin-bottom: 20px; }
+.sp-hide { display: block; }
+.pc-hide { display: none; }
 
 .pillars-section { width: 100%; background: var(--navy2); padding: 80px 60px; display: flex; flex-direction: column; align-items: center; }
 .section-heading { font-family: var(--font-jp); font-size: 42px; font-weight: 500; color: var(--white); line-height: 1.7; text-align: center; margin-bottom: 50px; }
@@ -250,6 +261,8 @@ body { background: var(--navy); }
   .case-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 }
 @media (max-width: 540px) {
+  .sp-hide { display: none; }
+  .pc-hide { display: block; }
   .pillars-section { padding: 40px 24px; }
   .intro-section { padding: 40px 24px 0; }
   .cases-section { padding: 40px 24px; }
