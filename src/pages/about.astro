@@ -31,7 +31,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- Tagline -->
   <p class="tagline appear" style="transition-delay:.2s">
-    私たちは、お客さまの新たなチャレンジに伴走し、<br>感情を満たすことに全力を尽くします
+    価値共創型事業マネジメントで、<br class="sp-br" />中小企業の持続的成長を支援
   </p>
 
   <!-- Office / Company Info -->
@@ -77,7 +77,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="profile-bio">
             化学商社で素材発掘や新規開発の傍ら、中小企業様の事業課題に向き合い、人との繋がりや関係構築を学ぶ。財閥系化学メーカーにヘッドハンティングされ、セグメント毎の顧客と 「ものづくり」の共通ビジョンで連携し、QCD にフォーカスした開発から製品立上げまでのマネジメント、ソリューション活動を経験。<br />
             また、現場のプロセス改善やチームビルディングなど、様々な人との取組み、信頼関係の構築のなかで、顧客からの高度な要求に対し、社内各部門と顧客それぞれの視点を結びつけ、最適な合意を導きながら事業を推進してきた経験が私の原点である。<br />
-            「いかなる優れた戦略も、実行する『人』と『信頼関係』があってこそ初めて価値が生まれる」<br />
+            「いかなる優れた戦略も、品質もコストも、実行する『人』と『信頼関係』があってこそ初めて価値が生まれる」<br />
             この原点での確信から、自ら企業内に入り込んで実行に伴走する「プロジェクトマネジメント」としてのスタイルを確立した。<br /><br />
             2023年10月より、コンサルティング業を開始。20年以上の to B 活動で400社以上の企業支援の実績、未来への自立支援型コーチング、地域やPTA活動によるボランティア精神を活かし、「中小企業の無限の可能性に情熱を注ぐ」ことを理念に活動中。<br />
             現在、中小企業の持続的な成長をミッションとし、「事業コンサルタント / プロジェクトマネージャー」として、戦略から実行、成長まで一気通貫型の支援を実践中。<br />
@@ -136,6 +136,7 @@ body { background: var(--navy); }
 .main { background: var(--navy); }
 
 .tagline { font-family: var(--font-jp); font-size: 20px; font-weight: 400; color: var(--white); line-height: 1.8; text-align: center; margin: 39px auto; padding: 0 60px; width: 100%; max-width: 1000px; }
+.sp-br { display: none; }
 
 .office-section { width: 100%; background: var(--navy2); padding: 54px 60px; display: flex; flex-direction: column; align-items: center; }
 .office-card { background: var(--blue); border-radius: 50px; padding: 60px 100px; width: 100%; max-width: 1000px; }
@@ -169,6 +170,7 @@ body { background: var(--navy); }
   .profile-text-area { padding: 20px 0 0; }
 }
 @media (max-width: 540px) {
+  .sp-br { display: inline; }
   .office-section { padding: 40px 24px; }
   .office-card { padding: 40px 24px; }
   .profile-section { padding: 40px 24px; border-radius: 0 50px 50px 0; }
