@@ -38,7 +38,7 @@ function formatDate(date: Date) {
         <div class="service-label-gap"></div>
         <div class="section-label-row">
           <div class="label-line"></div>
-          <h2 class="label-text">Service</h2>
+          <h2 class="label-text">当社のサービス：「3つの柱」</h2>
           <div class="label-line"></div>
         </div>
       </div>
@@ -54,21 +54,21 @@ function formatDate(date: Date) {
             <div class="service-card-icon"><span class="material-icons">group</span></div>
             <p class="service-card-title">戦略</p>
           </div>
-          <p class="service-card-desc">未来志向の参謀。孤独な経営者を支えるセカンドオピニオンとして、経営資源を活用し、事業の進むべき道を示す羅針盤</p>
+          <p class="service-card-desc">経営者を支え、達成すべき目的に対し、有限な資源（資金・人）を活用し、合理的かつ効果的にシナリオを描きます</p>
         </div>
         <div class="service-card">
           <div class="service-card-head">
             <div class="service-card-icon"><span class="material-icons">cast</span></div>
-            <p class="service-card-title">仕組み化</p>
+            <p class="service-card-title">仕組み</p>
           </div>
-          <p class="service-card-desc">利益を生む生産性向上。ムダを排除した業務プロセスの再構築とデジタル活用により、高効率で『筋肉質な組織』を実現</p>
+          <p class="service-card-desc">概念としての「仕組み」だけでなく、現場を動機付ける「仕掛け」をセットに、共感と当事者意識を埋め込み、組織に実行力を定着させます</p>
         </div>
         <div class="service-card">
           <div class="service-card-head">
             <div class="service-card-icon"><span class="material-icons">content_paste</span></div>
-            <p class="service-card-title">販路開拓</p>
+            <p class="service-card-title">販路</p>
           </div>
-          <p class="service-card-desc">『売り込み』から『選ばれる』モデルへ。自社の強みを言語化して顧客を引き寄せる導線を設計し、持続的な収益源を確保</p>
+          <p class="service-card-desc">価値を必要とする人に届けるため、販売チャネルを構築し、継続的な成果に繋げます</p>
         </div>
         <div style="grid-column:1/-1;width:100%;padding:35px 0;">
           <img class="service-img" src="/images/s-1456x816_v-fms_webp_72f91ef5-5240-4dc6-98e0-f6ace8fbaa58_middle.webp" alt="Service" />
@@ -204,7 +204,7 @@ body { background: var(--blue); }
 .service-label-wrap { margin-top: 130px; margin-bottom: 0; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0; }
 .service-pre-label { font-family: var(--font-jp); font-size: 20px; font-weight: 500; color: var(--sand); letter-spacing: 0.05em; text-align: center; margin-bottom: 0; }
 .service-label-gap { height: 40px; }
-.service-label-wrap .label-text { font-size: 20px; }
+.service-label-wrap .label-text { font-size: 20px; white-space: nowrap; }
 
 .service-more-section { width: 100%; background: var(--blue); border-radius: 0 90px 0 0; padding: 0 60px; display: flex; flex-direction: column; align-items: center; padding-bottom: 0; }
 .service-cards-wrap { width: 100%; max-width: 1000px; padding: 10px 0 73px; }
@@ -277,10 +277,12 @@ body { background: var(--blue); }
   .service-desc-text { font-size: 14px; margin-top: 56px; }
   .service-label-wrap { margin-top: 70px; }
   .service-pre-label { font-size: 12px; letter-spacing: -0.03em; }
+  .service-label-wrap .label-text { font-size: 14px; }
   .service-more-section { padding: 0 8px; }
   .service-grid { grid-template-columns: 1fr; gap: 20px; }
   .service-card { width: 100%; padding: 20px 20px 30px 25px; }
   .service-card-title { font-size: 16px; }
+  .service-card-desc { font-size: 14px; }
   .service-card-icon { width: 40px; height: 40px; }
   .service-card-icon .material-icons { font-size: 14px; }
   .service-img { height: 174px; border-radius: 27px; }
