@@ -55,6 +55,12 @@ import Layout from '../layouts/Layout.astro';
         </p>
 
         <form id="contactForm" novalidate>
+          <input type="hidden" name="access_key" value="cee2b25a-c678-4754-bea2-91a84b3aef6c" />
+          <input type="hidden" name="subject" value="【SHUNKOH】サイトからのお問い合わせ" />
+          <input type="hidden" name="from_name" value="SHUNKOH コーポレートサイト" />
+          <!-- Honeypot: hidden from users, filled only by bots -->
+          <input type="checkbox" name="botcheck" class="form-botcheck" tabindex="-1" autocomplete="off" />
+
           <div class="form-group">
             <label class="form-label" for="company">
               会社名 <span class="form-optional">任意</span>
@@ -89,19 +95,19 @@ import Layout from '../layouts/Layout.astro';
             </label>
             <div class="form-radio-group">
               <label class="form-radio">
-                <input type="radio" name="category" value="consultation" checked />
+                <input type="radio" name="category" value="初回相談のお申し込み" checked />
                 <span>初回相談のお申し込み</span>
               </label>
               <label class="form-radio">
-                <input type="radio" name="category" value="service" />
+                <input type="radio" name="category" value="サービスに関するご質問" />
                 <span>サービスに関するご質問</span>
               </label>
               <label class="form-radio">
-                <input type="radio" name="category" value="partnership" />
+                <input type="radio" name="category" value="協業のご提案" />
                 <span>協業のご提案</span>
               </label>
               <label class="form-radio">
-                <input type="radio" name="category" value="other" />
+                <input type="radio" name="category" value="その他" />
                 <span>その他</span>
               </label>
             </div>
@@ -119,10 +125,12 @@ import Layout from '../layouts/Layout.astro';
             ご入力いただいた個人情報は、お問い合わせへの返答にのみ使用いたします。
           </p>
 
-          <button class="form-submit" type="submit">
+          <button class="form-submit" type="submit" id="formSubmit">
             <span class="material-icons">send</span>
-            送信する
+            <span id="formSubmitLabel">送信する</span>
           </button>
+
+          <p class="form-error" id="formError" role="alert"></p>
         </form>
 
         <div class="form-success" id="formSuccess">
@@ -178,6 +186,14 @@ body { background: var(--navy); }
 .form-submit { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: var(--blue2); border: none; border-radius: 16px; padding: 20px 40px; font-family: var(--font-jp); font-size: 17px; font-weight: 700; color: var(--white); cursor: pointer; transition: background 0.2s, scale 0.2s; }
 .form-submit:hover { background: #0456a0; scale: 0.98; }
 .form-submit .material-icons { font-size: 20px; }
+.form-submit:disabled { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); cursor: not-allowed; scale: 1; }
+
+.form-botcheck { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+.form-error {
+  display: none; margin-top: 20px; padding: 14px 18px; border-radius: 12px;
+  background: rgba(226,76,76,0.12); border: 1px solid rgba(226,76,76,0.35);
+  font-family: var(--font-jp); font-size: 14px; color: #ffb4b4; line-height: 1.8;
+}
 
 .form-success { display: none; text-align: center; padding: 60px 40px; }
 .form-success .material-icons { font-size: 64px; color: var(--blue3); margin-bottom: 20px; }
@@ -195,10 +211,52 @@ body { background: var(--navy); }
 </style>
 
 <script>
-document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+const form = document.getElementById('contactForm') as HTMLFormElement | null;
+const successPanel = document.getElementById('formSuccess');
+const errorPanel = document.getElementById('formError');
+const submitBtn = document.getElementById('formSubmit') as HTMLButtonElement | null;
+const submitLabel = document.getElementById('formSubmitLabel');
+
+form?.addEventListener('submit', async (e) => {
   e.preventDefault();
-  (this as HTMLFormElement).style.display = 'none';
-  const success = document.getElementById('formSuccess');
-  if (success) success.style.display = 'block';
+
+  // novalidate is set so the browser stays quiet until submit; check by hand.
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  if (errorPanel) errorPanel.style.display = 'none';
+  if (submitBtn) submitBtn.disabled = true;
+  if (submitLabel) submitLabel.textContent = '送信中...';
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(form),
+    });
+    const data = await res.json().catch(() => null);
+
+    if (res.ok && data?.success) {
+      form.style.display = 'none';
+      if (successPanel) {
+        successPanel.style.display = 'block';
+        successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    throw new Error(data?.message ?? `HTTP ${res.status}`);
+  } catch (err) {
+    console.error('Web3Forms submit failed:', err);
+    if (errorPanel) {
+      errorPanel.textContent =
+        '送信に失敗しました。時間をおいて再度お試しください。繰り返し失敗する場合は、お手数ですがお電話にてご連絡ください。';
+      errorPanel.style.display = 'block';
+    }
+  } finally {
+    if (submitBtn) submitBtn.disabled = false;
+    if (submitLabel) submitLabel.textContent = '送信する';
+  }
 });
 </script>
