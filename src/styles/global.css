@@ -6,7 +6,7 @@
   --font-jp: 'Zen Kaku Gothic New', sans-serif;
   --font-en: 'Montserrat', sans-serif;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family: var(--font-jp); background: var(--white); color: var(--white); overflow-x: hidden; }
 
 /* SIDEBAR */
