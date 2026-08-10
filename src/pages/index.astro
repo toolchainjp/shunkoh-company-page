@@ -32,9 +32,34 @@ function formatDate(date: Date) {
   <section class="service-section appear">
     <div class="service-desc-block">
       <p class="service-heading">「提案」で終わらせない。<br />「実行」に伴走するプロジェクトマネージャー</p>
-      <p class="service-desc-text">AIが最適な戦略（理想）を提示できる時代。<br />しかし、企業にはそれを現場で実行する<br class="sp-br" />「資源と仕組み（現実）」が不足しています。<br />当社はこのギャップを埋め、戦略を絵に描いた餅で<br class="sp-br" />終わらせず、<br class="pc-br" />確実に実行・完遂させるあなたの<br class="sp-br" />右腕（プロジェクトマネージャー）です。</p>
+      <p class="service-desc-text">AIが最適な戦略（理想）を提示できる時代。<br />しかし、企業にはそれを現場で実行する<br class="sp-br" />「資源と仕組み（現実）」が不足しています。<br />当社はこのギャップを埋め、戦略を絵に描いた餅で終わらせず、<br class="sp-br" /><br class="pc-br" />確実に実行・完遂させる、あなたの右腕となる<br class="sp-br" />「事業コンサルタント / プロジェクトマネージャー」です。</p>
       <div class="service-label-wrap">
-        <p class="service-pre-label">＜ 事業コンサルタント / プロジェクトマネジメント ＞</p>
+        <div class="benefits-block">
+          <p class="benefits-title">＜ お客さまのベネフィット ＞</p>
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <p class="benefit-problem"><span class="benefit-tag">悩み①</span>「戦略や計画はあるが、人手不足で実行できない」</p>
+              <div class="benefit-solution">
+                <p class="benefit-label">解決策（実行伴走）</p>
+                <p class="benefit-text">外部からの「助言」に留まらず、実務を牽引するプロジェクトマネージャーとして伴走します。タスク整理や進行管理、リソース最適化を支援し、停滞する計画を確実に推進します。</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <p class="benefit-problem"><span class="benefit-tag">悩み②</span>「新しい取り組みが、現場の抵抗にあい定着しない」</p>
+              <div class="benefit-solution">
+                <p class="benefit-label">解決策（実行力の定着）</p>
+                <p class="benefit-text">プロセスを押し付けず、対話によって「自己効力感」を上げます。小さな成功体験の積み重ねで現場の当事者意識を育み、仕組みが自然と定着する「自走型の組織」を作ります。</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <p class="benefit-problem"><span class="benefit-tag">悩み③</span>「作って終わりで、持続的なビジネス成果に繋がらない」</p>
+              <div class="benefit-solution">
+                <p class="benefit-label">解決策（選ばれるモデル設計）</p>
+                <p class="benefit-text">単なるプロジェクト完了ではなく、その先の事業成長を見据えます。自社の強みが「市場から選ばれるビジネスモデル」を共に設計し、継続的で安定した成果を生む土台を構築します。</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="service-label-gap"></div>
         <div class="section-label-row">
           <div class="label-line"></div>
@@ -202,9 +227,18 @@ body { background: var(--blue); }
 .sp-br { display: none; }
 .pc-br { display: inline; }
 .service-label-wrap { margin-top: 130px; margin-bottom: 0; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0; }
-.service-pre-label { font-family: var(--font-jp); font-size: 21px; font-weight: 500; color: var(--sand); letter-spacing: 0.05em; text-align: center; margin-bottom: 0; }
-.service-label-gap { height: 40px; }
+.service-label-gap { height: 60px; }
 .service-label-wrap .label-text { font-size: 20px; white-space: nowrap; }
+
+.benefits-block { width: 100%; max-width: 1000px; }
+.benefits-title { font-family: var(--font-jp); font-size: 21px; font-weight: 500; color: var(--sand); letter-spacing: 0.05em; text-align: center; margin-bottom: 36px; }
+.benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
+.benefit-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.benefit-problem { font-family: var(--font-jp); font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.7; }
+.benefit-tag { display: inline-block; background: var(--blue2); color: var(--sand); font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; margin-right: 6px; white-space: nowrap; }
+.benefit-solution { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; }
+.benefit-label { font-family: var(--font-jp); font-size: 13px; font-weight: 700; color: var(--blue3); margin-bottom: 8px; }
+.benefit-text { font-family: var(--font-jp); font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.8); line-height: 1.7; text-align: justify; }
 
 .service-more-section { width: 100%; background: var(--blue); border-radius: 0 90px 0 0; padding: 0 60px; display: flex; flex-direction: column; align-items: center; padding-bottom: 0; }
 .service-cards-wrap { width: 100%; max-width: 1000px; padding: 10px 0 73px; }
@@ -276,8 +310,9 @@ body { background: var(--blue); }
   .service-heading { font-size: 17px; margin-top: 28px; }
   .service-desc-text { font-size: 14px; margin-top: 56px; }
   .service-label-wrap { margin-top: 70px; }
-  .service-pre-label { font-size: 13px; letter-spacing: -0.03em; }
   .service-label-wrap .label-text { font-size: 14px; }
+  .benefits-grid { grid-template-columns: 1fr; gap: 16px; }
+  .benefits-title { font-size: 16px; letter-spacing: -0.02em; }
   .service-more-section { padding: 0 8px; }
   .service-grid { grid-template-columns: 1fr; gap: 20px; }
   .service-card { width: 100%; padding: 20px 20px 30px 25px; }
