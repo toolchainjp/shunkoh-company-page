@@ -8,6 +8,7 @@
   },
   "postCreateCommand": "bun install",
   "forwardPorts": [4321, 8788],
+  "appPort": ["4321:4321", "8788:8788"],
   "portsAttributes": {
     "4321": {
       "label": "Astro dev server",
