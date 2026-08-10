@@ -160,15 +160,15 @@ import Layout from '../layouts/Layout.astro';
 body { background: var(--navy); }
 .main { background: var(--navy); }
 
-.mvv-section { width: 100%; box-sizing: border-box; align-self: stretch; margin: 48px 0 0; padding: 0 60px; display: flex; flex-direction: column; gap: 40px; }
-.mvv-inner { width: 100%; max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+.mvv-section { width: 100%; padding: 48px 60px 0; display: flex; flex-direction: column; align-items: center; }
+.mvv-inner { width: 100%; max-width: 860px; display: flex; flex-direction: column; gap: 40px; }
 .mvv-block { display: flex; flex-direction: column; gap: 10px; }
-.mvv-heading { font-family: var(--font-jp); font-size: 20px; font-weight: 400; color: var(--white); line-height: 1.8; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 6px; margin-bottom: 4px; }
+.mvv-heading { font-family: var(--font-jp); font-size: 20px; font-weight: 400; color: var(--sand); line-height: 1.8; border-bottom: 1px solid rgba(211,200,165,0.3); padding-bottom: 6px; margin-bottom: 4px; }
 .mvv-key { font-weight: 700; }
 .mvv-subtitle { font-family: var(--font-jp); font-size: 20px; font-weight: 400; color: var(--sand); line-height: 1.8; }
-.mvv-body { font-family: var(--font-jp); font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.85); line-height: 1.9; }
+.mvv-body { font-family: var(--font-jp); font-size: 17px; font-weight: 400; color: var(--sand); line-height: 1.9; }
 .mvv-value-item { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
-.mvv-value-title { font-family: var(--font-jp); font-size: 20px; font-weight: 400; color: var(--white); line-height: 1.8; }
+.mvv-value-title { font-family: var(--font-jp); font-size: 20px; font-weight: 400; color: var(--sand); line-height: 1.8; }
 
 .sp-br { display: none; }
 
@@ -192,7 +192,7 @@ body { background: var(--navy); }
 .profile-name { font-size: 22px; font-weight: 500; color: var(--white); line-height: 1.8; }
 .profile-bio { font-size: 14px; font-weight: 400; color: var(--white); line-height: 1.8; margin-top: 8px; margin-bottom: 57px; text-align: justify; font-feature-settings: 'palt' 1; }
 
-.carousel-section { width: 100%; background: var(--blue); height: 288px; overflow: hidden; display: flex; align-items: center; }
+.carousel-section { width: 100%; background: var(--blue); height: 288px; overflow: hidden; overflow-x: hidden; display: flex; align-items: center; }
 .carousel-track { display: flex; height: 180px; animation: slide 25s linear infinite; width: max-content; }
 @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 .carousel-item { width: 280px; height: 180px; padding: 0 10px; flex-shrink: 0; }
@@ -205,7 +205,7 @@ body { background: var(--navy); }
 }
 @media (max-width: 540px) {
   .sp-br { display: inline; }
-  .mvv-section { padding: 0 24px; margin-top: 36px; }
+  .mvv-section { padding: 36px 24px 0; }
   .mvv-inner { gap: 28px; }
   .mvv-heading, .mvv-subtitle, .mvv-value-title { font-size: 19px; }
   .mvv-body { font-size: 16px; }
