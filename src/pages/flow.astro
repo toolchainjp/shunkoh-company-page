@@ -132,8 +132,8 @@ body { background: var(--navy); }
 .main { background: var(--navy); }
 
 /* PC: show full image */
-.flow-hero { height: auto; overflow: visible; }
-.flow-hero img { height: auto; object-fit: contain; }
+.flow-hero { height: auto; overflow: visible; background: transparent; }
+.flow-hero img { height: auto; object-fit: contain; display: block; }
 /* SP: keep cropped fixed height (same as global default) */
 @media (max-width: 540px) {
   .flow-hero { height: 220px; overflow: hidden; }
