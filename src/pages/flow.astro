@@ -128,8 +128,8 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-body { background: var(--navy); }
-.main { background: var(--navy); }
+:global(body) { background: var(--navy); }
+:global(.main) { background: var(--navy); }
 
 /* PC: show full image */
 .flow-hero { height: auto; overflow: visible; background: transparent; }

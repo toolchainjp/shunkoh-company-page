@@ -90,8 +90,8 @@ function formatDate(date: Date) {
 </Layout>
 
 <style>
-body { background: var(--navy); }
-.main { background: var(--navy); }
+:global(body) { background: var(--navy); }
+:global(.main) { background: var(--navy); }
 
 .article-section { width: 100%; background: var(--navy); padding: 60px 60px 80px; display: flex; flex-direction: column; align-items: center; }
 .article-inner { width: 100%; max-width: 800px; }

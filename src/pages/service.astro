@@ -188,8 +188,8 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-body { background: var(--navy); }
-.main { background: var(--navy); }
+:global(body) { background: var(--navy); }
+:global(.main) { background: var(--navy); }
 
 .intro-section { width: 100%; padding: 60px 60px 0; display: flex; flex-direction: column; align-items: center; }
 .intro-text { font-family: var(--font-jp); font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.85); line-height: 2; text-align: center; max-width: 720px; margin-bottom: 20px; }

@@ -156,8 +156,8 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-body { background: var(--navy); }
-.main { background: var(--navy); }
+:global(body) { background: var(--navy); }
+:global(.main) { background: var(--navy); }
 
 .mvv-section { width: 100%; padding: 48px 60px 0; display: flex; flex-direction: column; align-items: center; }
 .mvv-inner { width: 100%; max-width: 860px; display: flex; flex-direction: column; gap: 40px; }
