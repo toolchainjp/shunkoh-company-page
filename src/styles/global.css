@@ -14,7 +14,7 @@ body { font-family: var(--font-jp); background: var(--white); color: var(--white
   position: fixed; top: 0; left: 0; width: 20%; height: 100vh;
   background: var(--white); display: flex; flex-direction: column;
   align-items: center; justify-content: space-between;
-  padding: 21px 30px 41px; z-index: 100;
+  padding: 21px 30px 24px; z-index: 100; overflow-y: auto;
 }
 .sidebar-logo-wrap { width: 100%; }
 .logo-link { display: flex; flex-direction: column; align-items: center; text-decoration: none; width: 100%; }
@@ -22,14 +22,14 @@ body { font-family: var(--font-jp); background: var(--white); color: var(--white
 .logo-img { width: 50%; max-width: 90px; margin-bottom: 6px; }
 .logo-name { font-family: var(--font-en); font-size: 20px; font-weight: 400; letter-spacing: 0.29em; color: #000; text-align: center; line-height: 1.4; }
 .logo-sub { font-family: var(--font-jp); font-size: 11px; font-weight: 500; color: rgb(74,71,71); text-align: center; margin-top: 3px; }
-.sidebar-nav { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; list-style: none; margin-top: 80px; }
+.sidebar-nav { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; list-style: none; margin-top: 40px; }
 .sidebar-nav li { border-bottom: 1px solid #091a33; width: 100%; text-align: center; }
 .sidebar-nav li:first-child { border-top: 1px solid #091a33; }
 .sidebar-nav a { display: block; font-family: var(--font-jp); font-size: 16px; font-weight: 500; color: #091a33; text-decoration: none; padding: 24px 0; transition: color 0.2s; }
 .sidebar-nav a:hover { color: var(--blue3); }
 .sidebar-nav a.active { color: #091a33; }
-.sidebar-contact { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--blue); border-radius: 22px; width: 100%; padding: 15px; text-decoration: none; transition: background 0.2s, scale 0.2s; gap: 4px; }
-.sidebar-contact:hover { background: #001f35; scale: 0.95; }
+.sidebar-contact { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--navy); border-radius: 22px; width: 100%; padding: 15px; text-decoration: none; transition: background 0.2s, scale 0.2s; gap: 4px; flex-shrink: 0; }
+.sidebar-contact:hover { background: #0d1f35; scale: 0.95; }
 .sidebar-contact .material-icons { background: var(--blue2); border-radius: 50%; color: var(--white); font-size: 18px; padding: 8px; }
 .contact-label { font-family: var(--font-jp); font-size: 14px; font-weight: 700; color: var(--white); text-align: center; }
 
