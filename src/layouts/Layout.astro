@@ -113,7 +113,27 @@ const { title, description = '', activePage } = Astro.props;
   </footer>
 </main>
 
+<button id="backToTop" aria-label="トップに戻る" title="トップに戻る">
+  <span class="material-icons">keyboard_arrow_up</span>
+</button>
+
 <style>
+#backToTop {
+  position: fixed; bottom: 32px; right: 32px; z-index: 500;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #15263e; border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, background 0.2s, scale 0.2s;
+}
+#backToTop.visible { opacity: 1; pointer-events: auto; }
+#backToTop:hover { background: var(--blue2); scale: 1.08; }
+#backToTop .material-icons { font-size: 28px; }
+@media (max-width: 540px) {
+  #backToTop { bottom: 20px; right: 16px; width: 42px; height: 42px; }
+  #backToTop .material-icons { font-size: 24px; }
+}
+
 .sidebar-bottom { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 12px; }
 
 .menu-btn { display: none; }
@@ -206,6 +226,12 @@ const { title, description = '', activePage } = Astro.props;
 </style>
 
 <script>
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop?.classList.toggle('visible', window.scrollY > 300);
+}, { passive: true });
+backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
 const els = document.querySelectorAll('.appear');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
