@@ -96,7 +96,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="profile-content appear" style="transition-delay:.2s">
         <img class="profile-photo" src="/images/shiraishi-profile.jpg" alt="白石 将幸" />
         <div class="profile-text-area">
-          <p class="profile-role">株式会社 シュンコー  代表取締役<br>特定非営利活動法人  日本経営士協会　経営士　No.32346号<br>認知症アドバイザー</p>
+          <p class="profile-role">株式会社 シュンコー  代表取締役<br><span class="profile-role-logo-row"><img class="jmca-logo" src="/images/jmca-logo.png" alt="JMCA" />特定非営利活動法人  日本経営士協会　経営士　No.32346号</span><br>認知症アドバイザー</p>
           <p class="profile-name">白石　将幸</p>
           <p class="profile-bio">
             化学商社で素材発掘や新規開発の傍ら、中小企業様の事業課題に向き合い、人との繋がりや関係構築を学ぶ。財閥系化学メーカーにヘッドハンティングされ、セグメント毎の顧客と 「ものづくり」の共通ビジョンで連携し、QCD にフォーカスした開発から製品立上げまでのマネジメント、ソリューション活動を経験。<br />
@@ -188,6 +188,8 @@ import Layout from '../layouts/Layout.astro';
 .profile-photo { width: 198px; height: 181px; border-radius: 30px; object-fit: cover; flex-shrink: 0; }
 .profile-text-area { flex: 1; padding: 0 70px 0 35px; }
 .profile-role { font-size: 14px; font-weight: 400; color: var(--white); line-height: 1.8; }
+.profile-role-logo-row { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.jmca-logo { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
 .profile-name { font-size: 22px; font-weight: 500; color: var(--white); line-height: 1.8; }
 .profile-bio { font-size: 14px; font-weight: 400; color: var(--white); line-height: 1.8; margin-top: 8px; margin-bottom: 57px; text-align: justify; font-feature-settings: 'palt' 1; }
 
